@@ -23,6 +23,17 @@ public class SpawnPlayerBody : MonoBehaviour
             GameObject newBody = Instantiate(playerBodyPrefab, playerBodyparent);
             float spawnheight = headHeight + (bodyCount * bodyHeight);
             newBody.transform.localPosition = Vector3.down * spawnheight;
+
+            newBody.TryGetComponent<BodyMovement>(out BodyMovement bodyMovement);
+            
+            if (bodyCount == 0)
+            {
+                bodyMovement?.SetFollowTarget(transform);
+            }
+            else
+            {
+                bodyMovement?.SetFollowTarget(playerBodyparent.GetChild(bodyCount - 1));
+            }
         }
     }
 }

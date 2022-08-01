@@ -25,7 +25,9 @@ public class Food : MonoBehaviour
             playerHealth?.SetCount();
 
             GameManager.Instance.UpdateScore(count);
+
+            gameObject.SetActive(false);
         }
-        gameObject.SetActive(false);
+
     }
 }
